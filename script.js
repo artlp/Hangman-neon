@@ -78,6 +78,7 @@ function newGame() {
     document.querySelector(".wrapper").classList.add("hidden");
     document.querySelector(".winwrapper").classList.add("hidden");
     playerLives = 5;
+    correctLetters = [];
     getNewWord();
     lifeCount.innerText = playerLives;
     for (const el of lives) {
