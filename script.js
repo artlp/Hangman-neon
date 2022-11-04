@@ -1,21 +1,21 @@
-let section, letter, button, holder;
-const vocabulary = ["ANIMAL", "ANNOTATION", "PANTHER", "LAPTOP", "VEHICLE", "CONCERT", "HEALTH", "PILLOW", "ELECTRICITY", "FUNERAL", "WALLPAPER", "BARNACLE", "SUNLIGHT", "NEWSPAPER", "TENDERLOIN", "MASQUERADE", "CHRONICLES", "FUTURE", "SECRET", "STATEMENT", "LAUGHTER", "OPENMINDNESS", "FATHER", "RESURRECTION", "POLICE", "ANIMAL", "COMPROMISE", "ROMANCE", "RUBBER", "INSECT"];
-const lives = document.querySelectorAll('.life');
-let word;
-const wordDisplay2 = document.querySelector('.worddisplay2');
+let section, letter, button, holder, word, wordArr, hiddenWord;
 let playerLives = 5;
+
+const vocabulary = ["ANIMAL", "ANNOTATION", "PANTHER", "LAPTOP", "VEHICLE", "CONCERT", "HEALTH", "PILLOW", "ELECTRICITY", "FUNERAL", "WALLPAPER", "BARNACLE", "SUNLIGHT", "NEWSPAPER", "TENDERLOIN", "MASQUERADE", "CHRONICLES", "FUTURE", "SECRET", "STATEMENT", "LAUGHTER", "OPENMINDNESS", "FATHER", "RESURRECTION", "POLICE", "ANIMAL", "COMPROMISE", "ROMANCE", "RUBBER", "INSECT", "MOVIE"];
+const lives = document.querySelectorAll('.life');
+const wordDisplay2 = document.querySelector('.worddisplay2');
 const lifeCount = document.getElementById("lifecount");
 const gameOver = document.querySelector('#gameover');
 const btnStart = document.querySelectorAll('.newgame');
+const answer = document.querySelector('#answer');
 
 lifeCount.innerText = playerLives;
 
 btnStart.forEach((e) => {
     e.addEventListener("click", () => {
-        getNewWord();
+        newGame();
     })
 })
-
 
 window.addEventListener("load", function () {
     holder = document.getElementById("buttonsHolder");
@@ -29,20 +29,17 @@ window.addEventListener("load", function () {
         button.onclick = function (x) { showLetter(this.getAttribute("data-letter"), x); };
         buttonsHolder.appendChild(button);
     }
-
 });
 function getNewWord() {
-    return word = vocabulary[Math.floor(Math.random() * (vocabulary.length + 1))];
+    word = vocabulary[Math.floor(Math.random() * (vocabulary.length + 1))];
+    wordArr = word.split('');
+    hiddenWord = wordArr.map(() => {
+    return `<span class="letterBox"> &#10005; </span>`})
+    wordDisplay2.innerHTML = hiddenWord.join('');
+    console.log(word);
 }
+
 getNewWord();
-console.log(getNewWord());
-
-let wordArr = word.split('');
-const hiddenWord = wordArr.map(() => {
-    return `<span class="letterBox"> &#10005; </span>`;
-});
-
-wordDisplay2.innerHTML = hiddenWord.join('');
 
 function showLetter(letter, x) {
     if (wordArr.includes(letter)) {
@@ -65,7 +62,22 @@ function showLetter(letter, x) {
 function checkLives() {
     if (playerLives === 0) { 
         setTimeout(() => {
-        gameOver.classList.remove("hidden")
+        document.querySelector(".wrapper").classList.remove("hidden");
+        answer.innerHTML = `YOU LOST! <br> The word was <br><span class="wrong">${word}</span>`;
     },400)
 }
+}
+
+function newGame() {
+    document.querySelector(".wrapper").classList.add("hidden");
+    playerLives = 5;
+    getNewWord();
+    lifeCount.innerText = playerLives;
+    for (const el of lives) {
+        el.classList.remove("lostlife"); 
+    }
+    document.querySelectorAll(".letterbtn").forEach((e) => {
+        e.classList.remove("correct");
+        e.classList.remove("wrong");
+    })
 }
