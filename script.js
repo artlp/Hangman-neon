@@ -50,6 +50,7 @@ function showLetter(letter, x) {
                 correctLetters[i] = `${letter}`
                 if (correctLetters.join() === wordArr.join()) {
                     document.querySelector(".winwrapper").classList.remove("hidden");
+                    document.querySelector(".win").innerHTML = `YOU WON! <br> The word was <br><span class="correct">${word}</span>`;
 
                 } 
             }
