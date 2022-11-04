@@ -43,7 +43,7 @@ getNewWord();
 let correctLetters = [];
 function showLetter(letter, x) {
     if (wordArr.includes(letter)) {
-        wordArr.forEach((e, i, arr) => {
+        wordArr.forEach((e, i) => {
             if (e === letter) {
                 x.target.classList.add("correct");
                 hiddenWord[i] = `<span class="letterBox guessed"> ${letter} </span>`;
