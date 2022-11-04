@@ -1,7 +1,7 @@
 let section, letter, button, holder, word, wordArr, hiddenWord;
 let playerLives = 5;
 
-const vocabulary = ["ANIMAL", "ANNOTATION", "PANTHER", "LAPTOP", "VEHICLE", "CONCERT", "HEALTH", "PILLOW", "ELECTRICITY", "FUNERAL", "WALLPAPER", "BARNACLE", "SUNLIGHT", "NEWSPAPER", "TENDERLOIN", "MASQUERADE", "CHRONICLES", "FUTURE", "SECRET", "STATEMENT", "LAUGHTER", "OPENMINDNESS", "FATHER", "RESURRECTION", "POLICE", "ANIMAL", "COMPROMISE", "ROMANCE", "RUBBER", "INSECT", "MOVIE"];
+const vocabulary = ["ANIMAL", "ANNOTATION", "PANTHER", "LAPTOP", "VEHICLE", "CONCERT", "HEALTH", "PILLOW", "ELECTRICITY", "FUNERAL", "WALLPAPER", "BARNACLE", "SUNLIGHT", "NEWSPAPER", "DOLPHIN", "MASQUERADE", "CHRONICLES", "FUTURE", "SECRET", "STATEMENT", "LAUGHTER", "OPENMINDNESS", "FATHER", "RESURRECTION", "POLICE", "BUILDING", "SCOMPROMISE", "ROMANCE", "RUBBER", "INSECT", "KNIGHT", "PANCAKE"];
 const lives = document.querySelectorAll('.life');
 const wordDisplay2 = document.querySelector('.worddisplay2');
 const lifeCount = document.getElementById("lifecount");
