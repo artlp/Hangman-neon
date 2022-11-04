@@ -1,7 +1,7 @@
 let section, letter, button, holder, word, wordArr, hiddenWord;
 let playerLives = 5;
 
-const vocabulary = ["ANIMAL", "ANNOTATION", "PANTHER", "LAPTOP", "VEHICLE", "CONCERT", "HEALTH", "PILLOW", "ELECTRICITY", "FUNERAL", "WALLPAPER", "BARNACLE", "SUNLIGHT", "NEWSPAPER", "DOLPHIN", "MASQUERADE", "CHRONICLES", "FUTURE", "SECRET", "STATEMENT", "LAUGHTER", "OPENMINDNESS", "FATHER", "RESURRECTION", "POLICE", "BUILDING", "SCOMPROMISE", "ROMANCE", "RUBBER", "INSECT", "KNIGHT", "PANCAKE"];
+const vocabulary = ["ANIMAL", "ANNOTATION", "PANTHER", "LAPTOP", "VEHICLE", "CONCERT", "HEALTH", "PILLOW", "ELECTRICITY", "FUNERAL", "WALLPAPER", "BARNACLE", "SUNLIGHT", "NEWSPAPER", "DOLPHIN", "MASQUERADE", "CHRONICLES", "FUTURE", "SECRET", "STATEMENT", "LAUGHTER", "OPENMINDNESS", "FATHER", "RESURRECTION", "POLICE", "BUILDING", "COMPROMISE", "ROMANCE", "RUBBER", "INSECT", "KNIGHT", "PANCAKE"];
 const lives = document.querySelectorAll('.life');
 const wordDisplay2 = document.querySelector('.worddisplay2');
 const lifeCount = document.getElementById("lifecount");
@@ -31,10 +31,11 @@ window.addEventListener("load", function () {
     }
 });
 function getNewWord() {
-    word = vocabulary[Math.floor(Math.random() * (vocabulary.length + 1))];
+    let rng = Math.floor(Math.random() * (vocabulary.length));
+    word = vocabulary[rng];
     wordArr = word.split('');
     hiddenWord = wordArr.map(() => {
-    return `<span class="letterBox"> &#10005; </span>`})
+    return `<span class="letterBox">&#10005;</span>`})
     wordDisplay2.innerHTML = hiddenWord.join('');
     console.log(word);
 }
