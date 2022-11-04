@@ -217,7 +217,7 @@ body {
 }
 
 
-#gameover {
+#gameover, .winwrapper {
     background: black;
     color: white;
     font-family: 'Share Tech Mono', monospace;
@@ -233,7 +233,6 @@ body {
     justify-content: center;
     align-items: center;
     line-height: 7rem;
-
 }
 
 .hidden {

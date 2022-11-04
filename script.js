@@ -40,13 +40,18 @@ function getNewWord() {
 }
 
 getNewWord();
-
+let correctLetters = [];
 function showLetter(letter, x) {
     if (wordArr.includes(letter)) {
         wordArr.forEach((e, i, arr) => {
             if (e === letter) {
                 x.target.classList.add("correct");
                 hiddenWord[i] = `<span class="letterBox guessed"> ${letter} </span>`;
+                correctLetters[i] = `${letter}`
+                if (correctLetters.join() === wordArr.join()) {
+                    document.querySelector(".winwrapper").classList.remove("hidden");
+
+                } 
             }
         });
     } else {
@@ -70,6 +75,7 @@ function checkLives() {
 
 function newGame() {
     document.querySelector(".wrapper").classList.add("hidden");
+    document.querySelector(".winwrapper").classList.add("hidden");
     playerLives = 5;
     getNewWord();
     lifeCount.innerText = playerLives;
